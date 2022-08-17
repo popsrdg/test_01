@@ -78,7 +78,9 @@ function rdgtestparse() {
         var text = $(this).text();
         var value = $(this).attr('value');
         alert('Index is: ' + index + ' and text is ' + text + ' and Value ' + value);
-        document.getElementById("prdgtest").innerHTML =  value;
+      // document.getElementById("prdgtest").innerHTML =  value;
+      document.getElementById("prdgtest").innerHTML =  'x'; 
+      
     };
  }
  </script>
@@ -98,7 +100,7 @@ function rdgtestparse() {
  
 <p> test</p>
 <p id="p1">crude parsing</p>
-<button onclick="crudeparse()">Print Alerts for list 1</button>
+<button onclick="crudeparse()">Print Alerts for list 1 crudeparse</button>
 <p> test</p>
 
 <p> test</p>
