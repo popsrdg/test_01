@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The iframe height attribute</h1>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Sortable - Connect lists</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #sortable1, #sortable2, #sortable3 {
+    border: 4px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #sortable1 li, #sortable2 li, #sortable3 li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 120px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+<script>
+  $( function() {
+    $( "#sortable1, #sortable2, #sortable3" ).sortable({
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+  } );
+</script>
+
+<script>
+function myFunction() {
+  const element = document.getElementById("myP");
+  element.style.fontSize = "24px";
+}
+</script>
+
+
+<script>
+function myFunctionText() {
+	document.getElementById("p1").innerHTML = "New text!";
+}
+</script>
+
+
+ <script>
+function crudeparse() {
+    $('#sortable1 li').each(function (i) {
+
+        var index = $(this).index();
+        var text = $(this).text();
+        var value = $(this).attr('value');
+        alert('Index is: ' + index + ' and text is ' + text + ' and Value ' + value);
+    });
+ }
+ </script>
+
+
+ <script>
+function rdgtestparse() {
+    $('#sortable1 li').each(function (i) {
+
+        var index = $(this).index();
+        var text = $(this).text();
+        var value = $(this).attr('value');
+        alert('Index is: ' + index + ' and text is ' + text + ' and Value ' + value);
+        document.getElementById("prdgtest").innerHTML =  value;
+    };
+ }
+ </script>
+
+
+
+</head>
+<body>
+
+<p> test</p>
+<p id="p1">Hello World!</p>
+<button onclick="myFunctionText()">Change text above me</button>
+
+<button onclick="myFunction()">Change</button>
+<p id="myP">Click "Change" to change my font size.</p>
+ 
+ 
+<p> test</p>
+<p id="p1">crude parsing</p>
+<button onclick="crudeparse()">Print Alerts for list 1</button>
+<p> test</p>
+
+<p> test</p>
+<p id="p1">RDG Test Parse</p>
+<button onclick="rdgtestparse()">Print Alerts for list 1</button>
+<p id="prdgtest"> test</p>
+
+
+<ul id="sortable1" class="connectedSortable">
+  <li class="ui-state-default">Lyrical 1</li>
+  <li class="ui-state-default">Lyrical 2</li>
+  <li class="ui-state-default">Lyrical 3</li>
+  <li class="ui-state-default">Lyrical 4</li>
+  <li class="ui-state-default">Lyrical 5</li>
+</ul>
+ 
+<ul id="sortable2" class="connectedSortable">
+  <li class="ui-state-highlight">Ballet 1</li>
+  <li class="ui-state-highlight">Ballet 2</li>
+  <li class="ui-state-highlight">Ballet 3</li>
+  <li class="ui-state-highlight">Ballet 4</li>
+  <li class="ui-state-highlight">Ballet 5</li>
+</ul>
+ 
+<ul id="sortable3" class="connectedSortable">
+  <li class="ui-state-red">HipHop 1</li>
+  <li class="ui-state-green">HipHop 2</li>
+  <li class="ui-state-white">HipHop 3</li>
+  <li class="ui-state-white">HipHop 4</li>
+  <li class="ui-state-white">HipHop 5</li>
+</ul>
+ 
+
+ 
+</body>
+</html>
+
+</body>
+</html>
+
