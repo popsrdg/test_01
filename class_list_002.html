@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Recital Schedule Options</h1>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Sortable - Connect lists</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #sortable1, #sortable2, #sortable3, #sortable4 {
+    border: 4px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #sortable1 li, #sortable2 li, #sortable3 li, #sortable4 li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 120px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+<script>
+  $( function() {
+    $( "#sortable1, #sortable2, #sortable3, #sortable4").sortable({
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+  } );
+</script>
+
+ <script>
+function crudeparse() {
+    $('#sortable1 li').each(function (i) {
+
+        var index = $(this).index();
+        var text = $(this).text();
+        var value = $(this).attr('value');
+        alert('Index is: ' + index + ' and text is ' + text + ' and Value ' + value);
+    });
+ }
+ </script>
+
+</head>
+<body>
+
+<p> test</p>
+<p id="p1">Hello World!</p>
+
+<br><br>
+
+
+<div style="display: flex; flex-direction: row;">
+  <div style="margin-right: 20px;">
+    <h2>Class List</h2>
+    <ul id="sortable1" class="connectedSortable">
+      <li class="ui-state-default">Lyrical 1</li>
+      <li class="ui-state-default">Lyrical 2</li>
+       <li class="ui-state-highlight">Ballet 1</li>
+      <li class="ui-state-highlight">Ballet 2</li>
+      <li class="ui-state-red">HipHop 1</li>
+      <li class="ui-state-green">HipHop 2</li>
+      <li class="ui-state-white">HipHop 3</li>
+      <li class="ui-state-white">HipHop 4</li>
+    </ul>
+  </div>
+
+  <div style="margin-right: 20px;">
+    <h2>Recital 1</h2>
+    <ul id="sortable2" class="connectedSortable">
+    </ul>
+  </div>
+
+  <div style="margin-right: 20px;">
+    <h2>Recital 2</h2>
+    <ul id="sortable3" class="connectedSortable">
+    </ul>
+  </div>
+
+  <div>
+    <h2>Recital 3</h2>
+    <ul id="sortable4" class="connectedSortable">
+    </ul>
+  </div>
+</div>
+
+<br><br>
+
+</body>
+</html>
+
+</body>
+</html>
+
