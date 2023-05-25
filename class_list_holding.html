@@ -1,0 +1,54 @@
+
+
+
+<script>
+    function populateSortable1xxx() {
+      // Clear the existing items in sortable1
+      $('#sortable1').empty();
+    
+      // Define your Google Sheet API URL
+      //var sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/10T-WfK7erM9cBYSHVkuiHv5FHi7Hj_sqJfXHf8jEuzs/values/ClassList!A:A';
+      //var sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/10T-WfK7erM9cBYSHVkuiHv5FHi7Hj_sqJfXHf8jEuzs/values/ClassList!A:A?key=AIzaSyAb7rz-ASS0mOt4T2NopStiHiUc57PmJ_I';
+      //var sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/10T-WfK7erM9cBYSHVkuiHv5FHi7Hj_sqJfXHf8jEuzs/gviz/tq?tqx=out:json';
+      var sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/10T-WfK7erM9cBYSHVkuiHv5FHi7Hj_sqJfXHf8jEuzs/values/ClassList!A:A';
+    
+        // Define the published Google Sheet URL
+        //var sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRggAkX-1cF83OP6rHv1ltCN33nxtDPQf0yjUQV_mOH4-3tta1pj1kMiD5BFhd9J5AbqXIt9eFfAmhL/pubhtml'; // Replace with your published URL
+    
+    
+      // Send a GET request to the Google Sheets API
+      //$spreadsheets.values.get(sheetURL, function(data) {
+      $.get(sheetURL, function(data) {
+        console.log(data);    // Log the response data to the console for inspection
+      
+        // Extract the values from the response
+        var values = data.values;
+    
+        // Iterate through the values and create list items
+        for (var i = 0; i < values.length; i++) {
+          var classValue = values[i][0]; // Assuming the "Class" column is in the first column (column A)
+    
+          // Create a new list item and append it to sortable1
+          var listItem = $('<li class="ui-state-default">' + classValue + '</li>');
+          $('#sortable1').append(listItem);
+        }
+      })
+      .done(function() {
+        alert('Sortable1 populated successfully!');
+      })
+      .fail(function() {
+        alert('Error occurred while populating Sortable1.');
+      });
+    }
+    </script>
+    
+    
+<body>
+
+    
+  <button onclick="populateSortable1()">Populate Sortable1</button>
+ 
+
+  
+</body>
+    
