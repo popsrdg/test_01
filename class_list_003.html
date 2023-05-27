@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>xRecital Schedule Options</h1>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Sortable - Connect lists</title>
+  <style>
+  #sortable1, #sortable2, #sortable3, #sortable4 {
+    border: 4px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #sortable1 li, #sortable2 li, #sortable3 li, #sortable4 li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    background-color: #f0f0f0;
+    width: 120px;
+  }
+
+  /* New style for hover effect */
+  .sortable1-item:hover::after {
+    content: attr(data-hover);
+    position: absolute;
+    background: #331616;
+    color: #c01919;
+    padding: 4px;
+    font-size: 0.8em;
+    border-radius: 4px;
+    top: -25px;
+    left: 0;
+  }
+
+
+
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+  <script>
+    $(function() {
+      $("#sortable1, #sortable2, #sortable3, #sortable4").sortable({
+        connectWith: ".connectedSortable"
+      }).disableSelection();
+    });
+  </script>
+
+  <script>
+    function crudeparse() {
+      $('#sortable1 li').each(function(i) {
+        var index = $(this).index();
+        var text = $(this).text();
+        var value = $(this).attr('value');
+        alert('Index is: ' + index + ' and text is ' + text + ' and Value ' + value);
+      });
+    }
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      // Function to populate sortable1
+      function populateSortable1() {
+        // Clear the existing items in sortable1
+        $('#sortable1').empty();
+
+        // List of values with displayed name and hover value
+        var values = [
+          { name: 'Hip Hop 1', hoverValue: 'Hover Value 1' },
+          { name: 'Hip Hop 2', hoverValue: 'Hover Value 2' },
+          { name: 'Hip Hop 3', hoverValue: 'Hover Value 3' },
+          { name: 'Hip Hop 4', hoverValue: 'Hover Value 4' },
+          { name: 'Ballet 1', hoverValue: 'Hover Value 5' },
+          { name: 'Ballet 2', hoverValue: 'Hover Value 6' },
+          { name: 'Ballet 3', hoverValue: 'Hover Value 7' },
+          { name: 'Ballet 4a', hoverValue: 'Hover Value 8' },
+          { name: 'Ballet 4b', hoverValue: 'Hover Value 9' },
+          { name: 'Ballet 5', hoverValue: 'Hover Value 10' }
+        ];
+
+        // Iterate through the values and create list items
+        //for (var i = 0; i < values.length; i++) {
+        //  var listItem = $('<li></li>').text(values[i].name).attr('data-hover', values[i].hoverValue);
+        //  $('#sortable1').append(listItem);
+        //}
+
+        var sortable1 = document.getElementById('sortable1');
+        values.forEach(function(item) {
+          var li = document.createElement('li');
+          li.textContent = item.name;
+          li.setAttribute('data-hover', item.hoverValue);
+          li.classList.add('sortable-item');
+          sortable1.appendChild(li);
+        });
+
+      }
+
+      // Button click event handler
+      $('#populateButton').click(function() {
+        populateSortable1();
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <p>test</p>
+  <p id="p1">Hello World!</p>
+
+  <button id="populateButton">Populate static</button>
+  <br><br>
+
+  <div style="display: flex; flex-direction: row;">
+    <div style="margin-right: 20px;">
+      <h2>Class List</h2>
+      <ul id="sortable1" class="connectedSortable">
+      </ul>
+    </div>
+
+    <div style="margin-right: 20px;">
+      <h2>Recital 1</h2>
+      <ul id="sortable2" class="connectedSortable">
+      </ul>
+    </div>
+
+    <div style="margin-right: 20px;">
+      <h2>Recital 2</h2>
+      <ul id="sortable3" class="connectedSortable">
+      </ul>
+    </div>
+
+    <div>
+      <h2>Recital 3</h2>
+      <ul id="sortable4" class="connectedSortable">
+      </ul>
+    </div>
+  </div>
+
+  <br><br>
+</body>
+</html>
+
